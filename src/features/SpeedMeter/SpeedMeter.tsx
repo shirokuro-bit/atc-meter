@@ -1,6 +1,8 @@
 import * as d3 from "d3";
 import {useEffect, useRef, useState} from "react";
 
+import atcChime from "../../assets/audio/atc.mp3";
+
 
 const SpeedMeter = () => {
   // SVGの幅
@@ -30,7 +32,7 @@ const SpeedMeter = () => {
     
     // メーターバー部分の追加
     translated.append("path")
-      .attr("d", arc)
+      .attr("d", arc as never)
     
     // メーターの針の追加
     // var linePath = translated.append("line")
@@ -56,8 +58,8 @@ const SpeedMeter = () => {
       .append("g")
       .attr("class", "tick")
       .attr("transform", () => `translate(${width / 2},${height / 2})`);
-      // 移動と回転を同時にする場合はこっち
-      // .attr("transform", d => `translate(${width / 2},${height / 2})rotate(${arcScale(d)})`);
+    // 移動と回転を同時にする場合はこっち
+    // .attr("transform", d => `translate(${width / 2},${height / 2})rotate(${arcScale(d)})`);
     
     
     // 目盛りの線
@@ -94,7 +96,7 @@ const SpeedMeter = () => {
   const [speed, setSpeed] = useState(0);
   const [preSpeed, setPreSpeed] = useState(0);
   
-  const audio = new Audio("/atc.mp3");
+  const audio = new Audio(atcChime);
   
   useEffect(() => {
     // 針の動作アニメーション 以前の値⇒更新後の値へ針を動かす
