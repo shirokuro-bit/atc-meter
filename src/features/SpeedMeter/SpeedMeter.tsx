@@ -117,9 +117,11 @@ const SpeedMeter = () => {
   return (
     <>
       <svg width={width} height={height} ref={svgRef}/>
-      <select onChange={event => handleSpeedChange(Number(event.target.value))}>
-        {[...Array(13)].map((_, index) => <option key={index}>{index * 10}</option>)}
-      </select>
+      <label>指示速度:
+        <select onChange={event => handleSpeedChange(Number(event.target.value))}>
+          {[...Array(13)].map((_, index) => <option key={index}>{index * 10}</option>)}
+        </select>
+      </label>
     </>
   );
 }
